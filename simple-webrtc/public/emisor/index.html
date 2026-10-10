@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FireSTREAM — Streamer</title>
+  <meta name="description" content="Estudio de transmisión WebRTC — Vista del streamer." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══════════════════════════════════════════════════════════ -->
+  <header class="navbar">
+    <a href="/" class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 23c-4.97 0-9-3.58-9-8 0-4.08 3.05-7.5 7.15-8.38C10.05 7.21 10 7.85 10 8.5c0 2.49 1.51 4.63 3.66 5.57C13.23 12.83 13 11.45 13 10c0-2.8 1.48-5.25 3.7-6.66.19 1.05.7 2.03 1.48 2.8 1.83 1.83 2.82 4.35 2.82 7.11 0 5.38-4.03 9.75-9 9.75z"/></svg>
+      </div>
+      <span class="brand-name">FIRE<span>.STUDIO</span></span>
+    </a>
+
+    <nav class="nav-group">
+      <a href="/" class="nav-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Inicio</span>
+      </a>
+      <a href="/emisor" class="nav-btn active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        <span>Streamer</span>
+      </a>
+      <a href="/receptor" class="nav-btn primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span>Ver en Vivo</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ═══ STUDIO LAYOUT ═════════════════════════════════════════════════════ -->
+  <div class="studio-layout">
+
+    <!-- ─── Columna principal ────────────────────────────────────────────── -->
+    <section class="studio-main">
+
+      <!-- Video local con HUD -->
+      <div class="video-stage">
+        <div class="video-hud">
+          <div class="badge-live" id="studioLiveTag" style="display:none;"><span class="dot-live"></span> EN VIVO</div>
+          <div class="badge-off" id="studioOffTag">OFF-AIR</div>
+        </div>
+        <!-- REQUIRED: no modificar id -->
+        <video id="localVideo" autoplay muted playsinline></video>
+      </div>
+
+      <!-- Controles -->
+      <div class="controls-card">
+        <div class="btn-row">
+          <!-- REQUIRED: no modificar id -->
+          <button id="startBtn">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Iniciar transmisión
+          </button>
+          <button id="stopBtn" disabled>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
+            Detener
+          </button>
+        </div>
+        <div class="stat-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--fire-o)" stroke-width="2" width="14" height="14">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <span>Viewers: <strong id="streamerViewers">0</strong></span>
+        </div>
+      </div>
+
+      <!-- REQUIRED: no modificar id -->
+      <div id="status">Presiona "Iniciar transmisión" para comenzar.</div>
+
+      <!-- Info del canal -->
+      <div class="info-panel">
+        <div class="info-header">
+          <div class="info-identity">
+            <div class="avatar av-lg"><div class="avatar-inner">NR</div></div>
+            <div>
+              <div class="info-name">Nébula Roja</div>
+              <div class="info-sub">Rumbo a la final · Gaming &amp; Competitivo</div>
+            </div>
+          </div>
+          <div class="info-stats">
+            <span class="stat-pill stat-fire">🎮 Gaming</span>
+          </div>
+        </div>
+        <p style="font-size:.875rem;color:var(--txt-2);line-height:1.55;">
+          Transmisión en tiempo real vía WebRTC. Inicia la transmisión para que los viewers puedan conectarse desde la vista de espectador.
+        </p>
+        <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
+          <span class="tag">#webrtc</span>
+          <span class="tag">#p2p</span>
+          <span class="tag">#firestream</span>
+          <span class="tag">#gaming</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ─── Chat panel (lee mensajes de viewers) ─────────────────────────── -->
+    <aside class="chat-panel">
+      <div class="chat-head">
+        <div class="chat-head-left">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Chat del stream
+        </div>
+        <span class="badge-live" id="chatLiveBadge" style="display:none;font-size:.65rem;"><span class="dot-live"></span> LIVE</span>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg">
+          <span class="author system">Sistema —</span>
+          <span>El chat está activo. Los mensajes de los viewers aparecerán aquí.</span>
+        </div>
+      </div>
+
+      <!-- Streamer también puede responder en el chat -->
+      <div class="chat-input-area">
+        <input type="text" id="streamerChatInput" placeholder="Responder al chat…" />
+        <button class="chat-send-btn" id="streamerSendBtn">Enviar</button>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Scripts Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="/firebase-config.js"></script>
+  <!-- REQUIRED: la lógica WebRTC original sin modificar -->
+  <script src="/emisor/emisor.js"></script>
+
+  <script>
+    /* ── HUD sync (sin tocar emisor.js) ─────────────────────────────────── */
+    const statusEl = document.getElementById('status');
+    const liveTag  = document.getElementById('studioLiveTag');
+    const offTag   = document.getElementById('studioOffTag');
+    const chatLiveBadge = document.getElementById('chatLiveBadge');
+
+    new MutationObserver(() => {
+      const t = statusEl.textContent || '';
+      const live = t.includes('Transmitiendo') || t.includes('vivo');
+      liveTag.style.display  = live ? 'inline-flex' : 'none';
+      offTag.style.display   = live ? 'none' : 'inline-flex';
+      chatLiveBadge.style.display = live ? 'inline-flex' : 'none';
+    }).observe(statusEl, { childList: true, characterData: true, subtree: true });
+
+    /* ── Chat via Firebase RTDB ──────────────────────────────────────────── */
+    const chatRef      = db.ref(ROOM_PATH + '/chat');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput    = document.getElementById('streamerChatInput');
+    const sendBtn      = document.getElementById('streamerSendBtn');
+
+    function appendMsg(data) {
+      const div = document.createElement('div');
+      div.className = 'chat-msg';
+      const roleClass = data.role === 'viewer' ? 'viewer' : 'streamer';
+      const label = data.role === 'viewer' ? 'Viewer' : 'Streamer';
+      div.innerHTML = `<span class="author ${roleClass}">${escHtml(data.name || label)}:</span> ${escHtml(data.text)}`;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function escHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    // Escuchar mensajes nuevos de Firebase
+    chatRef.limitToLast(80).on('child_added', snap => {
+      const d = snap.val();
+      if (d && d.text) appendMsg(d);
+    });
+
+    function sendStreamerMsg() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      chatRef.push({ role: 'streamer', name: 'Nébula Roja', text, ts: Date.now() });
+      chatInput.value = '';
+    }
+
+    sendBtn.addEventListener('click', sendStreamerMsg);
+    chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendStreamerMsg(); });
+
+    /* ── Viewer count ────────────────────────────────────────────────────── */
+    db.ref(ROOM_PATH + '/viewers').on('value', snap => {
+      const count = snap.val() ? Object.keys(snap.val()).length : 0;
+      document.getElementById('streamerViewers').textContent = count;
+    });
+  </script>
+</body>
+</html>

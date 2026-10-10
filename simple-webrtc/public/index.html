@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FireSTREAM — Inicio</title>
+  <meta name="description" content="Plataforma de streaming en vivo con WebRTC de baja latencia." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══════════════════════════════════════════════════════════ -->
+  <header class="navbar">
+    <a href="/" class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 23c-4.97 0-9-3.58-9-8 0-4.08 3.05-7.5 7.15-8.38C10.05 7.21 10 7.85 10 8.5c0 2.49 1.51 4.63 3.66 5.57C13.23 12.83 13 11.45 13 10c0-2.8 1.48-5.25 3.7-6.66.19 1.05.7 2.03 1.48 2.8 1.83 1.83 2.82 4.35 2.82 7.11 0 5.38-4.03 9.75-9 9.75z"/></svg>
+      </div>
+      <span class="brand-name">FIRE<span>.STREAM</span></span>
+    </a>
+
+    <nav class="nav-group">
+      <a href="/" class="nav-btn active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Inicio</span>
+      </a>
+      <a href="/emisor" class="nav-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        <span>Streamer</span>
+      </a>
+      <a href="/receptor" class="nav-btn primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span>Ver en Vivo</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ═══ PAGE ══════════════════════════════════════════════════════════════ -->
+  <div class="page">
+
+    <!-- ─── Hero Stream Destacado ────────────────────────────────────────── -->
+    <div class="hero-card">
+
+      <!-- Thumbnail visual -->
+      <div class="hero-thumb">
+        <div class="hero-thumb-bg"></div>
+        <div class="hero-thumb-label">
+          <span class="badge-live"><span class="dot-live"></span> EN VIVO</span>
+        </div>
+        <div class="hero-thumb-icon">🔥</div>
+      </div>
+
+      <!-- Info del stream destacado -->
+      <div class="hero-info">
+        <div class="hero-channel">
+          <div class="avatar av-md"><div class="avatar-inner">NR</div></div>
+          <div>
+            <div class="hero-channel-name">Nébula Roja</div>
+            <div class="hero-channel-sub">Canal Principal · FireSTREAM</div>
+          </div>
+        </div>
+
+        <div class="hero-title">Rumbo a la final — WebRTC en vivo</div>
+        <div class="hero-desc">Transmisión en tiempo real con latencia ultra-baja. Conecta el emisor y el receptor para experimentar la comunicación P2P directa sin intermediarios.</div>
+
+        <div class="hero-tags">
+          <span class="tag">#webrtc</span>
+          <span class="tag">#p2p</span>
+          <span class="tag">#gaming</span>
+          <span class="tag">#live</span>
+        </div>
+
+        <div class="stat-pill" style="width: fit-content;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--fire-o)" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <strong id="heroViewers">0</strong>&nbsp;espectadores en vivo
+        </div>
+
+        <div class="hero-actions">
+          <a href="/receptor" class="hero-cta">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Unirme al stream
+          </a>
+          <a href="/emisor" class="hero-cta-secondary">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            Transmitir
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─── Categorías ───────────────────────────────────────────────────── -->
+    <div class="section-head">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        Categorías
+      </h2>
+    </div>
+
+    <div class="cat-row">
+      <button class="cat-chip active">Todos</button>
+      <button class="cat-chip">Gaming</button>
+      <button class="cat-chip">Música</button>
+      <button class="cat-chip">Tecnología</button>
+      <button class="cat-chip">Creatividad</button>
+      <button class="cat-chip">Talk Shows</button>
+    </div>
+
+    <!-- ─── Otros Streams ─────────────────────────────────────────────────── -->
+    <div class="section-head">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        Streams Activos
+      </h2>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- Card 1 — Canal Principal WebRTC (dinámico con Firebase) -->
+      <a href="/receptor" class="stream-card">
+        <div class="card-thumb">
+          <div class="card-thumb-bg" style="background: radial-gradient(ellipse at 30% 60%, rgba(255,50,0,.22), transparent 65%), radial-gradient(ellipse at 75% 25%, rgba(255,140,0,.15), transparent 55%);"></div>
+          <div class="card-thumb-icon">🔥</div>
+          <div class="card-thumb-overlay">
+            <span class="badge-live" id="card1Badge"><span class="dot-live"></span> EN VIVO</span>
+            <span class="card-viewers">
+              <span class="dot-live" style="background:var(--fire-o);"></span>
+              <span id="card1Viewers">0</span>
+            </span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="avatar av-sm"><div class="avatar-inner">NR</div></div>
+          <div class="card-meta">
+            <div class="card-title">Rumbo a la final</div>
+            <div class="card-channel">Nébula Roja</div>
+            <div class="card-cat">🎮 Gaming &amp; Competitivo</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2 -->
+      <div class="stream-card" style="cursor:default;">
+        <div class="card-thumb">
+          <div class="card-thumb-bg" style="background: radial-gradient(ellipse at 60% 40%, rgba(80,0,255,.2), transparent 65%), radial-gradient(ellipse at 25% 75%, rgba(255,50,120,.12), transparent 55%);"></div>
+          <div class="card-thumb-icon">🧱</div>
+          <div class="card-thumb-overlay">
+            <span class="badge-live"><span class="dot-live"></span> EN VIVO</span>
+            <span class="card-viewers"><span class="dot-live" style="background:var(--fire-o);"></span> 1.2K</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="avatar av-sm"><div class="avatar-inner" style="color:#a78bfa;">PF</div></div>
+          <div class="card-meta">
+            <div class="card-title">Construyendo en vivo</div>
+            <div class="card-channel">Pixel Fuego</div>
+            <div class="card-cat">🛠️ Creatividad &amp; Diseño</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="stream-card" style="cursor:default;">
+        <div class="card-thumb">
+          <div class="card-thumb-bg" style="background: radial-gradient(ellipse at 50% 50%, rgba(0,200,180,.18), transparent 65%), radial-gradient(ellipse at 20% 30%, rgba(0,120,255,.12), transparent 55%);"></div>
+          <div class="card-thumb-icon">🎵</div>
+          <div class="card-thumb-overlay">
+            <span class="badge-live"><span class="dot-live"></span> EN VIVO</span>
+            <span class="card-viewers"><span class="dot-live" style="background:var(--fire-o);"></span> 843</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="avatar av-sm"><div class="avatar-inner" style="color:#22d3ee;">MS</div></div>
+          <div class="card-meta">
+            <div class="card-title">Sesión nocturna</div>
+            <div class="card-channel">Marea Sonora</div>
+            <div class="card-cat">🎶 Música &amp; Audio</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="stream-card" style="cursor:default;">
+        <div class="card-thumb">
+          <div class="card-thumb-bg" style="background: radial-gradient(ellipse at 40% 55%, rgba(255,200,0,.18), transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(255,80,0,.12), transparent 55%);"></div>
+          <div class="card-thumb-icon">💻</div>
+          <div class="card-thumb-overlay">
+            <span class="badge-live"><span class="dot-live"></span> EN VIVO</span>
+            <span class="card-viewers"><span class="dot-live" style="background:var(--fire-o);"></span> 2.4K</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="avatar av-sm"><div class="avatar-inner" style="color:#fbbf24;">CB</div></div>
+          <div class="card-meta">
+            <div class="card-title">Hackathon nocturno</div>
+            <div class="card-channel">Código Base</div>
+            <div class="card-cat">💡 Tecnología &amp; Dev</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div><!-- /page -->
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="/firebase-config.js"></script>
+  <script>
+    // Update live viewer count from Firebase
+    const roomRef = db.ref(ROOM_PATH);
+    roomRef.child('viewers').on('value', snap => {
+      const count = snap.val() ? Object.keys(snap.val()).length : 0;
+      document.getElementById('heroViewers').textContent = count;
+      document.getElementById('card1Viewers').textContent = count;
+    });
+
+    // Category chips toggle
+    document.querySelectorAll('.cat-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
